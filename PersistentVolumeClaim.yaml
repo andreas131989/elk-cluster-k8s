@@ -1,0 +1,14 @@
+# create per application / pod
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: efs-grafana
+  namespace: monitoring
+  annotations:
+    volume.beta.kubernetes.io/storage-class: "aws-efs-general-purpose"
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
