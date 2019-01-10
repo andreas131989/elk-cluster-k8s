@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: elasticsearch-config
+  namespace: monitoring
+data:
+  elasticsearch.yml: |-
+    cluster.name: "docker-cluster"
+    network.host: 0.0.0.0
+    discovery.zen.ping.unicast.hosts: ["master","ingest","data"]
+
