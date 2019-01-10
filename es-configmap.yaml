@@ -5,7 +5,25 @@ metadata:
   namespace: monitoring
 data:
   elasticsearch.yml: |-
-    cluster.name: "docker-cluster"
-    network.host: 0.0.0.0
-    discovery.zen.ping.unicast.hosts: ["master","ingest","data"]
+    cluster:
+      name: ${CLUSTER_NAME}
 
+    node:
+      master: ${NODE_MASTER}
+      data: ${NODE_DATA}
+      name: ${NODE_NAME}
+      ingest: ${NODE_INGEST}
+      max_local_storage_nodes: ${MAX_LOCAL_STORAGE_NODES}
+
+    processors: ${PROCESSORS:1}
+
+    network.host: 0.0.0.0
+    
+    http:
+      enabled: ${HTTP_ENABLE}
+
+    discovery:
+      zen:
+        ping.unicast.hosts: ${DISCOVERY_SERVICE}
+
+    xpack.ml.enabled: false
