@@ -78,18 +78,14 @@ spec:
           protocol: TCP
         volumeMounts:
         - name: elasticsearch-config-volume
-          mountPath: /usr/share/elasticsearch/config        
-        - name: elasticsearch-logging
-          mountPath: /data
-        - name: elasticsearch-logging-usr
-          mountPath: /usr/share/elasticsearch/data
+          mountPath: /usr/share/elasticsearch/config/elasticsearch.yml
+          subPath: elasticsearch.yml
+        - name: storage
+          mountPath: /data        
       volumes:
-      - name: elasticsearch-logging
-        persistentVolumeClaim:
-          claimName: efs-elasticsearch-data-datanode
-      - name: elasticsearch-logging-usr
-        persistentVolumeClaim:
-          claimName: efs-elasticsearch-usr-datanode
+      - name: storage
+        emptyDir:
+          medium: ""
       - name: elasticsearch-config-volume
         configMap:
           name: elasticsearch-config

@@ -43,6 +43,8 @@ spec:
               fieldPath: metadata.namespace
         - name: CLUSTER_NAME
           value: "tstesdb"
+        - name: DISCOVERY_SERVICE
+          value: "elasticsearch-discovery"
         - name: NETWORK_HOST 
           value: "_eth0_"
         - name: ES_JAVA_OPTS      
@@ -59,6 +61,8 @@ spec:
           value: "false"
         - name: NODE_INGEST
           value: "false"
+        - name: NODE_DATA
+          value: "true"
         - name: PROCESSORS
           valueFrom:
             resourceFieldRef:
@@ -76,19 +80,13 @@ spec:
           name: transport
           protocol: TCP
         volumeMounts:
-        - name: elasticsearch-logging-datanode
-          mountPath: /data
-        - name: elasticsearch-logging-usr-datanode
-          mountPath: /usr/share/elasticsearch/data
         - name: elasticsearch-config-volume
-          mountPath: /usr/share/elasticsearch/config
+          mountPath: /usr/share/elasticsearch/config/elasticsearch.yml
+          subPath: elasticsearch.yml
       volumes:
-      - name: elasticsearch-logging-datanode
-        persistentVolumeClaim:
-          claimName: efs-elasticsearch-data
-      - name: elasticsearch-logging-usr-datanode
-        persistentVolumeClaim:
-          claimName: efs-elasticsearch-logging-usr
+      - name: storage
+        emptyDir:
+          medium: ""
       - name: elasticsearch-config-volume
         configMap:
           name: elasticsearch-config
