@@ -10,17 +10,17 @@ To run the demo, first create a new namespace with the name monitoring. Then, ap
 
 Afterwards, create the 4 deployments
 
-kubectl apply -f es-master.yaml
-kubectl apply -f es-data.yaml
-kubectl apply -f es-ingest.yaml
-kubectl apply -f kibana.yaml
+- kubectl apply -f es-master.yaml
+- kubectl apply -f es-data.yaml
+- kubectl apply -f es-ingest.yaml
+- kubectl apply -f kibana.yaml
 
 Finally, create the internal cluster services for elasticsearch and the external loadbalancer service for kibana
 
-kubectl apply -f es-discovery-svc.yaml
-kubectl apply -f es-svc.yaml
-kubectl apply -f es-ingest-svc.yaml
-kubectl apply -f kibana-svc.yaml
+- kubectl apply -f es-discovery-svc.yaml
+- kubectl apply -f es-svc.yaml
+- kubectl apply -f es-ingest-svc.yaml
+- kubectl apply -f kibana-svc.yaml
 
 After the load balancer is provisioned automatically and configured, you can reach Kibana by using the url:
 http://kibanaExternalIp:5601
