@@ -2,12 +2,12 @@ This demo provides an out-of the box deployment of an elasticsearch-kibana Kuber
 
 
 To run the demo, first create a new namespace with the name monitoring. Then, apply the service account and the config maps.
-
+'''
 kubectl create namespace monitoring
 kubectl apply -f es-sa.yaml
 kubectl apply -f es-configmap.yaml
 kubectl apply -f kibana-cm.yaml
-
+'''
 Afterwards, create the 4 deployments
 
 kubectl apply -f es-master.yaml
