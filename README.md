@@ -1,5 +1,6 @@
 This demo provides an out-of the box deployment of an elasticsearch-kibana Kubernetes cluster. Below, the architecture of the demo is displayed.
 
+![alt text](https://raw.githubusercontent.com/andreas131989/elk-cluster-k8s/master/esk8s.png?token=AhcYFG-I9sP_TTbYTlDAWiEwVid65U3dks5cPxr5wA%3D%3D)
 
 To run the demo, first create a new namespace with the name monitoring. Then, apply the service account and the config maps.
 
